@@ -1,6 +1,6 @@
-import Header from "../../../modules/Header/components/Header";
+import {Header} from "../../../modules/Header";
 import {PizzaList} from "../../../modules/PizzaList";
-import Wrapper from "../../../modules/Wrapper/components/Wrapper";
+import {Wrapper} from "../../../modules/Wrapper";
 
 const Home = () => {
   return (
@@ -11,4 +11,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export {Home};

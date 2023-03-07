@@ -1,46 +1,24 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import PizzaListSortingItem from "./PizzaListSortingItem";
 import {pizzaListSortingIdSet} from "../../../store/actions";
-import {pizzaListLoaded} from "../../../store/actions";
 
-const PizzaListSorting = () => {
-  const data = [
-    {id: 0, name: "умолчанию", selector: ""},
-    {id: 1, name: "популярности", selector: "rating"},
-    {id: 2, name: "цене", selector: "price"},
-  ];
+const PizzaListSorting = ({sortingData}) => {
   const [isPopupShown, setIsPopupShown] = useState(false);
-  const activeId = useSelector(state => state.pizzaList.sortingId);
-  const categoryIndex = useSelector(state => state.pizzaList.categoryIndex);
+  const activeId = useSelector((state) => state.pizzaList.sortingId);
   const dispatch = useDispatch();
 
-  const handleSortingPopup = () => setIsPopupShown(isPopupShown => !isPopupShown);
+  const handleSortingPopup = () => setIsPopupShown((isPopupShown) => !isPopupShown);
 
-  const handleActiveId = id => {
+  const handleActiveId = (id) => {
     dispatch(pizzaListSortingIdSet(id));
     setIsPopupShown(false);
   };
 
-  const createRequestUrl = () => {
-    const {selector} = data[activeId];
-
-    if (categoryIndex === 0) {
-      return `https://63fb8c614e024687bf7a8230.mockapi.io/pizzas?sortby=${selector}`;
-    }
-
-    return `https://63fb8c614e024687bf7a8230.mockapi.io/pizzas?category=${categoryIndex}&sortby=${selector}`;
-  };
-
-  useEffect(() => {
-    const requestUrl = createRequestUrl();
-    fetch(requestUrl)
-      .then(response => response.json())
-      .then(data => dispatch(pizzaListLoaded(data)));
-  }, [activeId, categoryIndex]);
-
-  const sorting = data.map(({name, id}) => <PizzaListSortingItem key={id} id={id} activeId={activeId} onHandleActiveId={handleActiveId} name={name} />);
-  const activeName = data[activeId].name;
+  const sorting = sortingData.map(({name, id}) => (
+    <PizzaListSortingItem key={id} id={id} activeId={activeId} onHandleActiveId={handleActiveId} name={name} />
+  ));
+  const activeName = sortingData[activeId].name;
 
   return (
     <div className="sort">
