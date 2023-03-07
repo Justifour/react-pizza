@@ -1,4 +1,4 @@
-const SortingItem = ({id, activeId, onHandleActiveId, name}) => {
+const PizzaListSortingItem = ({id, activeId, onHandleActiveId, name}) => {
   const className = id === activeId ? "active" : "";
   return (
     <li className={className} onClick={() => onHandleActiveId(id)}>
@@ -7,4 +7,4 @@ const SortingItem = ({id, activeId, onHandleActiveId, name}) => {
   );
 };
 
-export default SortingItem;
+export default PizzaListSortingItem;

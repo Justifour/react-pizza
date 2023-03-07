@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {pizzaListCategoryIndexSet as categoryIndexSet, pizzaListLoaded as loaded} from "../../../components/Filters";
-import {pizzaListSortingIdSet as sortingIdSet} from "../../../components/Sorting";
+import {pizzaListCategoryIndexSet as categoryIndexSet, pizzaListLoaded as loaded} from "../../../components/PizzaListSettings";
+import {pizzaListSortingIdSet as sortingIdSet} from "../../../components/PizzaListSettings";
 
 const initialState = {
   data: [],
@@ -23,5 +23,4 @@ const slice = createSlice({
   },
 });
 
-export {loaded as pizzaListLoaded};
 export default slice.reducer;

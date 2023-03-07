@@ -1,4 +1,3 @@
-import {PizzaListReducer} from '../../modules/PizzaList';
-import Home from './Home';
+import Home from "./components/Home";
 
-export {PizzaListReducer, Home};
+export {Home};

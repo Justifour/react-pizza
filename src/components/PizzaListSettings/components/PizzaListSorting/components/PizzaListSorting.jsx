@@ -1,10 +1,10 @@
 import {useEffect, useState} from "react";
-import SortingItem from "./SortingItem";
-import {pizzaListSortingIdSet} from "../actions/actions";
 import {useDispatch, useSelector} from "react-redux";
-import {pizzaListLoaded} from "../../Filters/actions/actions";
+import PizzaListSortingItem from "./PizzaListSortingItem";
+import {pizzaListSortingIdSet} from "../../../store/actions";
+import {pizzaListLoaded} from "../../../store/actions";
 
-const Sorting = () => {
+const PizzaListSorting = () => {
   const data = [
     {id: 0, name: "умолчанию", selector: ""},
     {id: 1, name: "популярности", selector: "rating"},
@@ -39,7 +39,7 @@ const Sorting = () => {
       .then(data => dispatch(pizzaListLoaded(data)));
   }, [activeId, categoryIndex]);
 
-  const sorting = data.map(({name, id}) => <SortingItem key={id} id={id} activeId={activeId} onHandleActiveId={handleActiveId} name={name} />);
+  const sorting = data.map(({name, id}) => <PizzaListSortingItem key={id} id={id} activeId={activeId} onHandleActiveId={handleActiveId} name={name} />);
   const activeName = data[activeId].name;
 
   return (
@@ -63,4 +63,4 @@ const Sorting = () => {
   );
 };
 
-export default Sorting;
+export default PizzaListSorting;

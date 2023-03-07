@@ -1,9 +1,9 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {pizzaListCategoryIndexSet, pizzaListLoaded} from "../actions/actions";
-import Filter from "./Filter";
+import {pizzaListLoaded, pizzaListCategoryIndexSet} from "../../../store/actions";
+import PizzaListFilter from "./PizzaListFilter";
 
-const Filters = () => {
+const PizzaListFilters = () => {
   const sortingData = [
     {name: "умолчанию", selector: ""},
     {name: "популярности", selector: "rating"},
@@ -36,7 +36,7 @@ const Filters = () => {
   }, [activeIndex, sortingId]);
 
   const elements = data.map((name, i) => {
-    return <Filter key={i} index={i} activeIndex={activeIndex} onHandleActiveIndex={handleActiveIndex} name={name} />;
+    return <PizzaListFilter key={i} index={i} activeIndex={activeIndex} onHandleActiveIndex={handleActiveIndex} name={name} />;
   });
 
   return (
@@ -46,4 +46,4 @@ const Filters = () => {
   );
 };
 
-export default Filters;
+export default PizzaListFilters;
