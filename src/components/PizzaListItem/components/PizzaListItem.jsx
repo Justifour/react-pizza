@@ -1,12 +1,10 @@
-import {useState} from 'react';
-import PizzaType from './PizzaType';
-import PizzaSize from './PizzaSize';
-import {useDispatch, useSelector} from 'react-redux';
+import {useState} from "react";
+import PizzaType from "./PizzaType";
+import PizzaSize from "./PizzaSize";
 
 const PizzaListItem = ({imageUrl, title, price, types, sizes}) => {
-  const typeNames = ['традиционное', 'тонкое'];
-  const dispatch = useDispatch();
-  const data = useSelector(state => state.pizzaList);
+  const typeNames = ["традиционное", "тонкое"];
+
   const [activeTypeIndex, setActiveTypeIndex] = useState(0);
   const [activeSizeIndex, setActiveSizeIndex] = useState(0);
 

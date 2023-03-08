@@ -1,0 +1,18 @@
+.root {
+  display: flex;
+  position: relative;
+}
+
+.magnifier {
+  position: absolute;
+  bottom: 13px;
+  left: 13px;
+}
+
+.cross {
+  position: absolute;
+  bottom: 15px;
+  transition: all 0.7s;
+  right: 13px;
+  cursor: pointer;
+}
