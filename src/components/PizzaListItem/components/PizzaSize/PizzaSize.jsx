@@ -7,4 +7,4 @@ const PizzaSize = ({index, activeIndex, onChangeActiveSizeIndex, size}) => {
   );
 };
 
-export default PizzaSize;
+export {PizzaSize};

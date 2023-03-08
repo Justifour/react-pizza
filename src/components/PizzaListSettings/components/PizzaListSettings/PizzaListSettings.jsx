@@ -1,8 +1,8 @@
-import {PizzaListFilters} from "../../PizzaListFilters";
-import {PizzaListSorting} from "../../PizzaListSorting";
-import {pizzaListLoaded} from "../../../store/actions";
-import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useRef} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {PizzaListFilters} from "../PizzaListFilters/PizzaListFilters";
+import {PizzaListSorting} from "../PizzaListSorting/PizzaListSorting";
+import {pizzaListLoaded} from "../../store/actions";
 
 const PizzaListSettings = () => {
   const sortingData = [
@@ -52,4 +52,4 @@ const PizzaListSettings = () => {
   );
 };
 
-export default PizzaListSettings;
+export {PizzaListSettings};

@@ -7,4 +7,4 @@ const PizzaListSortingItem = ({id, activeId, onHandleActiveId, name}) => {
   );
 };
 
-export default PizzaListSortingItem;
+export {PizzaListSortingItem};

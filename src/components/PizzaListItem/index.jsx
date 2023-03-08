@@ -1,3 +1,3 @@
-import PizzaListItem from './components/PizzaListItem';
+import {PizzaListItem} from "./components/PizzaListItem/PizzaListItem";
 
 export {PizzaListItem};

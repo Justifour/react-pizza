@@ -7,4 +7,4 @@ const PizzaListFilter = ({index, activeIndex, onHandleActiveIndex, name}) => {
   );
 };
 
-export default PizzaListFilter;
+export {PizzaListFilter};

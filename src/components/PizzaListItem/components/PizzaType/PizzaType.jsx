@@ -1,5 +1,5 @@
 const PizzaType = ({index, activeIndex, onChangeActiveTypeIndex, type}) => {
-  const className = index === activeIndex ? 'active' : '';
+  const className = index === activeIndex ? "active" : "";
   return (
     <li className={className} onClick={() => onChangeActiveTypeIndex(index)}>
       {type}
@@ -7,4 +7,4 @@ const PizzaType = ({index, activeIndex, onChangeActiveTypeIndex, type}) => {
   );
 };
 
-export default PizzaType;
+export {PizzaType};

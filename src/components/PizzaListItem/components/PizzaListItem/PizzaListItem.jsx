@@ -1,6 +1,6 @@
 import {useState} from "react";
-import PizzaType from "./PizzaType";
-import PizzaSize from "./PizzaSize";
+import {PizzaType} from "../PizzaType/PizzaType";
+import {PizzaSize} from "../PizzaSize/PizzaSize";
 
 const PizzaListItem = ({imageUrl, title, price, types, sizes}) => {
   const typeNames = ["традиционное", "тонкое"];
@@ -43,4 +43,4 @@ const PizzaListItem = ({imageUrl, title, price, types, sizes}) => {
   );
 };
 
-export default PizzaListItem;
+export {PizzaListItem};
