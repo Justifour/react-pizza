@@ -1,29 +1,21 @@
 import {useDispatch} from "react-redux";
-import {pizzaListCategoryIndexSet} from "../../store/actions";
+import {pizzaListActiveCategoryIndexSet} from "../../store/actions";
 import {PizzaListFilter} from "./PizzaListFilter";
 
-const PizzaListFilters = ({categoryIndex, categoriesData}) => {
+const PizzaListFilters = ({data, activeIndex}) => {
   const dispatch = useDispatch();
 
   const handleActiveIndex = (index) => {
-    dispatch(pizzaListCategoryIndexSet(index));
+    dispatch(pizzaListActiveCategoryIndexSet(index));
   };
-
-  const elements = categoriesData.map((name, i) => {
-    return (
-      <PizzaListFilter
-        key={i}
-        index={i}
-        activeIndex={categoryIndex}
-        onHandleActiveIndex={handleActiveIndex}
-        name={name}
-      />
-    );
+  
+  const ui = data.map((name, i) => {
+    return <PizzaListFilter key={i} name={name} index={i} activeIndex={activeIndex} handleClick={handleActiveIndex} />;
   });
 
   return (
     <div className="categories">
-      <ul>{elements}</ul>
+      <ul>{ui}</ul>
     </div>
   );
 };

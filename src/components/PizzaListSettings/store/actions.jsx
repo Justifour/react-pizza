@@ -1,7 +1,7 @@
 import {createAction} from "@reduxjs/toolkit";
 
 const pizzaListLoaded = createAction("pizzaList/loaded");
-const pizzaListCategoryIndexSet = createAction("pizzaList/categoryIndexSet");
-const pizzaListSortingIdSet = createAction("pizzaList/sortingIdSet");
+const pizzaListActiveCategoryIndexSet = createAction("pizzaList/activeCategoryIndexSet");
+const pizzaListActiveSortingSelectorSet = createAction("pizzaList/activeSortingSelector");
 
-export {pizzaListSortingIdSet, pizzaListLoaded, pizzaListCategoryIndexSet};
+export {pizzaListLoaded, pizzaListActiveCategoryIndexSet, pizzaListActiveSortingSelectorSet};

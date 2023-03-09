@@ -1,5 +1,4 @@
 import {PizzaListSettings} from "./components/PizzaListSettings/PizzaListSettings";
-import {pizzaListLoaded, pizzaListCategoryIndexSet} from "./store/actions";
-import {pizzaListSortingIdSet} from "./store/actions";
+import {pizzaListLoaded, pizzaListActiveCategoryIndexSet, pizzaListActiveSortingSelectorSet} from "./store/actions";
 
-export {PizzaListSettings, pizzaListLoaded, pizzaListCategoryIndexSet, pizzaListSortingIdSet};
+export {PizzaListSettings, pizzaListLoaded, pizzaListActiveCategoryIndexSet, pizzaListActiveSortingSelectorSet};

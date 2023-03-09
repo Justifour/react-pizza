@@ -1,7 +1,7 @@
-const PizzaListSortingItem = ({id, activeId, onHandleActiveId, name}) => {
-  const className = id === activeId ? "active" : "";
+const PizzaListSortingItem = ({name, selector, activeSelector, handleClick}) => {
+  const className = selector === activeSelector ? "active" : "";
   return (
-    <li className={className} onClick={() => onHandleActiveId(id)}>
+    <li className={className} onClick={() => handleClick(selector)}>
       {name}
     </li>
   );
