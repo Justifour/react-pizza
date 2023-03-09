@@ -1,53 +1,44 @@
 import {useEffect, useRef} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import qs from "qs";
+import {useNavigate} from "react-router-dom";
 import {PizzaListFilters} from "../PizzaListFilters/PizzaListFilters";
 import {PizzaListSorting} from "../PizzaListSorting/PizzaListSorting";
 import {pizzaListLoaded} from "../../store/actions";
+import {createPizzaListUrl} from "../../../../helpers/createPizzaListUrl";
 
 const PizzaListSettings = () => {
-  const sortingData = [
-    {id: 0, name: "умолчанию", selector: "default"},
-    {id: 1, name: "популярности", selector: "rating"},
-    {id: 2, name: "цене", selector: "price"},
-  ];
-  const categoriesData = ["все", "стандартные", "острые"];
-  const didMountRef = useRef(false);
-  const sortingId = useSelector(state => state.pizzaList.sortingId);
-  const categoryIndex = useSelector(state => state.pizzaList.categoryIndex);
-  const searchValue = useSelector(state => state.pizzaList.searchValue);
+  const sortingData = useSelector((state) => state.pizzaList.sortingData);
+  const categoriesData = useSelector((state) => state.pizzaList.categoriesData);
+  const sortingId = useSelector((state) => state.pizzaList.sortingId);
+  const categoryIndex = useSelector((state) => state.pizzaList.categoryIndex);
+  const searchValue = useSelector((state) => state.pizzaList.searchValue);
+  const didMount = useRef(false);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const createRequestUrl = () => {
-    const {selector} = sortingData[sortingId];
-    if (!searchValue) {
-      if (categoryIndex === 0) {
-        return `https://63fb8c614e024687bf7a8230.mockapi.io/pizzas?sortby=${selector}`;
-      }
-
-      return `https://63fb8c614e024687bf7a8230.mockapi.io/pizzas?category=${categoryIndex}&sortby=${selector}`;
-    } else {
-      if (categoryIndex === 0) {
-        return `https://63fb8c614e024687bf7a8230.mockapi.io/pizzas?search=${searchValue}&sortby=${selector}`;
-      }
-
-      return `https://63fb8c614e024687bf7a8230.mockapi.io/pizzas?search=${searchValue}&sortby=${selector}`;
-    }
-  };
-
   useEffect(() => {
-    if (didMountRef.current) {
-      const requestUrl = createRequestUrl();
+    if (didMount.current) {
+      const {selector} = sortingData[sortingId];
+      const urlSearchParameters = qs.stringify({
+        sortBy: selector,
+        categoryIndex,
+        searchValue,
+      });
+      const requestUrl = createPizzaListUrl(selector, searchValue, categoryIndex);
+
       fetch(requestUrl)
-        .then(response => response.json())
-        .then(data => dispatch(pizzaListLoaded(data)));
+        .then((response) => response.json())
+        .then((data) => dispatch(pizzaListLoaded(data)));
+      navigate(`?${urlSearchParameters}`);
     }
-    didMountRef.current = true;
+    didMount.current = true;
   }, [sortingId, categoryIndex, searchValue]);
 
   return (
     <div className="content__top">
-      <PizzaListFilters sortingData={sortingData} categoriesData={categoriesData} />
-      <PizzaListSorting sortingData={sortingData} />
+      <PizzaListFilters categoryIndex={categoryIndex} categoriesData={categoriesData} />
+      <PizzaListSorting sortingId={sortingId} sortingData={sortingData} />
     </div>
   );
 };

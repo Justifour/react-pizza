@@ -1,22 +1,23 @@
 import {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {PizzaListSortingItem} from "./PizzaListSortingItem";
 import {pizzaListSortingIdSet} from "../../store/actions";
 
-const PizzaListSorting = ({sortingData}) => {
+const PizzaListSorting = ({sortingId, sortingData}) => {
   const [isPopupShown, setIsPopupShown] = useState(false);
-  const activeId = useSelector(state => state.pizzaList.sortingId);
   const dispatch = useDispatch();
 
-  const handleSortingPopup = () => setIsPopupShown(isPopupShown => !isPopupShown);
+  const handleSortingPopup = () => setIsPopupShown((isPopupShown) => !isPopupShown);
 
-  const handleActiveId = id => {
+  const handleActiveId = (id) => {
     dispatch(pizzaListSortingIdSet(id));
     setIsPopupShown(false);
   };
 
-  const sorting = sortingData.map(({name, id}) => <PizzaListSortingItem key={id} id={id} activeId={activeId} onHandleActiveId={handleActiveId} name={name} />);
-  const activeName = sortingData[activeId].name;
+  const sorting = sortingData.map(({name, id}) => (
+    <PizzaListSortingItem key={id} id={id} activeId={sortingId} onHandleActiveId={handleActiveId} name={name} />
+  ));
+  const activeName = sortingData[sortingId].name;
 
   return (
     <div className="sort">

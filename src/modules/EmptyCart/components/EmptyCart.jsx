@@ -8,9 +8,10 @@ const EmptyCart = () => (
     </h1>
     <br />
     <p className={styles.description}>
-      Вероятней всего, вы не заказывали ещё пиццу. <br></br> Для того, чтобы заказать пиццу, перейди на главную страницу.
+      Вероятней всего, вы не заказывали ещё пиццу. <br></br> Для того, чтобы заказать пиццу, перейди на главную
+      страницу.
     </p>
-    <img src={emptyCartImage}></img>
+    <img alt="Empty cart" src={emptyCartImage}></img>
   </div>
 );
 

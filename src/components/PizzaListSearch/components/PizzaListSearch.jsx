@@ -6,7 +6,7 @@ import styles from "../styles/PizzaListSearch.module.scss";
 
 const PizzaListSearch = () => {
   const dispatch = useDispatch();
-  const value = useSelector(state => state.pizzaList.searchValue);
+  const searchValue = useSelector((state) => state.pizzaList.searchValue);
 
   const handleClick = () => {
     dispatch(pizzaListSearched(""));
@@ -20,8 +20,8 @@ const PizzaListSearch = () => {
   return (
     <div className={styles.root}>
       <img className={styles.magnifier} src={magnifierIcon} />
-      <DebounceInput value={value} onChange={handleChange} debounceTimeout={300} element={TextInput} />
-      {value && <img onClick={handleClick} className={styles.cross} src={crossIcon} />}
+      <DebounceInput value={searchValue} onChange={handleChange} debounceTimeout={300} element={TextInput} />
+      {searchValue && <img onClick={handleClick} className={styles.cross} src={crossIcon} />}
     </div>
   );
 };
